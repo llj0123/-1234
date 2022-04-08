@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char strExp[]="2+2*3+2/2-1";
+    int leftOperand,rightOperand,res;
+         res=strExp[0]-'0';
+	for(int i=0;i<20;i++)
+	{
+		if(strExp[i]=='*')
+		{
+			strExp[i-1]=(strExp[i-1]-'0')*(strExp[i+1]-'0')+'0';
+			i++;
+		}
+		else if(strExp[i]=='/')
+		{
+			strExp[i-1]=(strExp[i-1]-'0')/(strExp[i+1]-'0')+'0';
+			i++;
+		}
+	}
+    for(int j=0;j<strlen(strExp);j++)
+	{
+	     if(strExp[j]=='+')
+		 {
+              rightOperand=strExp[j+1]-'0';
+              res=res+rightOperand;
+		 }
+         else if(strExp[j]=='-')
+		 {
+              rightOperand=strExp[j+1]-'0';
+              res=res-rightOperand;
+		 }
+	}
+	printf("res=%d\n",res);
+	return 0;
+}
+V3
